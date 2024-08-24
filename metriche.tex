@@ -1,0 +1,62 @@
+
+\section{Metriche di Valutazione delle Performance del Modello}
+
+Nell'ambito del riconoscimento automatico dei rifiuti plastici nei fiumi utilizzando la rete convoluzionale YOLO (You Only Look Once), l'accurata valutazione delle performance del modello è cruciale. Il contesto operativo, caratterizzato da variabilità ambientali e la presenza di oggetti confondenti, rende fondamentale l'impiego di metriche di valutazione che forniscano una visione completa dell'efficacia del modello. In questa sezione, discuteremo in dettaglio le metriche principali utilizzate per valutare il modello, giustificando la loro rilevanza rispetto all'obiettivo specifico di riconoscimento dei rifiuti plastici.
+
+\subsection{Precision}
+
+La \textit{Precision} è una metrica fondamentale nel contesto del riconoscimento dei rifiuti plastici. Questa misura indica la percentuale di rifiuti classificati correttamente tra tutti quelli identificati come rifiuti dal modello. In altre parole, la precision ci dice quanto possiamo fidarci delle predizioni positive effettuate da YOLO. La formula per calcolarla è la seguente:
+\begin{equation}
+\text{Precision} = \frac{TP}{TP + FP}
+\end{equation}
+dove:
+\begin{itemize}
+    \item \textit{TP} (True Positive): il numero di rifiuti plastici correttamente rilevati dal modello;
+    \item \textit{FP} (False Positive): il numero di oggetti non plastici erroneamente identificati come rifiuti plastici.
+\end{itemize}
+
+Nel contesto dei fiumi, dove possono essere presenti detriti naturali o altre forme di inquinamento, una precision elevata è essenziale per ridurre i falsi allarmi. Un'elevata precision significa che il modello è in grado di distinguere efficacemente i rifiuti plastici da altri oggetti, riducendo il rischio di identificare erroneamente materiali innocui come inquinanti, il che è cruciale per evitare sprechi di risorse in operazioni di pulizia.
+
+\subsection{Accuracy}
+
+L'\textit{Accuracy} rappresenta la proporzione complessiva delle predizioni corrette (sia positive che negative) rispetto a tutte le predizioni effettuate dal modello. Sebbene l'accuracy sia una metrica comunemente utilizzata per valutare i modelli di machine learning, essa ha alcune limitazioni, specialmente \textbf{in scenari con classi sbilanciate}, come nel nostro caso. La formula per l'accuracy è:
+\begin{equation}
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+dove:
+\begin{itemize}
+    \item \textit{TN} (True Negative): il numero di oggetti non plastici correttamente esclusi dal modello;
+    \item \textit{FN} (False Negative): il numero di rifiuti plastici non rilevati dal modello.
+\end{itemize}
+
+In un ambiente come i fiumi, dove i rifiuti plastici possono rappresentare una piccola frazione rispetto agli altri oggetti, l'accuracy potrebbe non riflettere adeguatamente le capacità del modello. Un alto valore di accuracy potrebbe essere fuorviante, poiché potrebbe essere raggiunto semplicemente non rilevando quasi nessun oggetto come plastica (minimizzando i falsi positivi a scapito dei veri positivi). Per questo motivo, l'accuracy deve essere valutata in combinazione con altre metriche, come la precision e la recall.
+
+\subsection{Recall}
+
+La \textit{Recall} misura la capacità del modello di identificare correttamente tutti i rifiuti plastici presenti. La recall è particolarmente importante in scenari dove la priorità è minimizzare il numero di rifiuti plastici non rilevati (falsi negativi), che possono avere un impatto ambientale significativo se lasciati nei corsi d'acqua. La formula per calcolare la recall è la seguente:
+\begin{equation}
+\text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+
+Nel contesto del riconoscimento dei rifiuti plastici, un alto valore di recall significa che il modello è efficace nel rilevare la maggior parte dei rifiuti, riducendo al minimo il rischio che rifiuti plastici possano sfuggire all'attenzione. Tuttavia, un aumento della recall potrebbe portare a una diminuzione della precision, poiché il modello potrebbe iniziare a classificare erroneamente più oggetti come plastica per evitare di perdere i rifiuti effettivi. Pertanto, è fondamentale trovare un equilibrio tra precision e recall.
+
+\subsection{F1-Score}
+
+L'\textit{F1-Score} è la media armonica tra precision e recall, offrendo una misura bilanciata che tiene conto sia dei falsi positivi che dei falsi negativi. Questa metrica è particolarmente utile in scenari come il riconoscimento dei rifiuti plastici, dove il dataset può presentare classi sbilanciate e dove è importante non sovra-ottimizzare il modello per una sola metrica a scapito dell'altra. La formula per l'F1-Score è:
+\begin{equation}
+F1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+Nel contesto del riconoscimento dei rifiuti plastici, l'F1-Score è \textbf{particolarmente indicato}, poiché consente di valutare l'efficacia complessiva del modello, bilanciando l'accuratezza con la capacità di rilevamento. Un F1-Score elevato indica che il modello YOLO è in grado di mantenere un buon equilibrio tra identificare correttamente i rifiuti plastici e minimizzare gli errori.
+
+\subsection{mean Average Precision (mAP)}
+
+Il \textit{mean Average Precision} (mAP) è una delle metriche più utilizzate e riconosciute nella valutazione delle performance di modelli di \textit{object detection}. Il mAP rappresenta la media delle \textit{Average Precision} (AP) calcolate su tutte le classi considerate nel modello. La \textit{Average Precision}, a sua volta, è l'area sotto la curva Precision-Recall per ciascuna classe. Il mAP è particolarmente rilevante per il nostro caso di studio, poiché:
+
+\begin{itemize}
+    \item Riflette le prestazioni complessive del modello su più classi di rifiuti plastici (se categorizzati in diverse tipologie);
+    \item Tiene conto della capacità del modello di rilevare i rifiuti plastici in condizioni variabili, come differenti condizioni di illuminazione, presenza di acqua torbida, e variazioni nella forma e dimensione dei rifiuti;
+    \item Considera le variazioni nella soglia di rilevamento del modello, fornendo un'indicazione della sua robustezza e capacità di generalizzazione.
+\end{itemize}
+
+Nel caso del riconoscimento dei rifiuti plastici, un mAP elevato indica che il modello è in grado di rilevare correttamente i rifiuti in diverse situazioni operative, mantenendo un buon equilibrio tra precisione e richiamo per ciascuna classe considerata. Questo è cruciale per garantire che il sistema di monitoraggio automatico sia affidabile in ambienti reali e possa contribuire efficacemente alla riduzione dell'inquinamento nei corsi d'acqua.
