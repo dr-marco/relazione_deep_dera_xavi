@@ -7,6 +7,15 @@
 \usepackage{hyperref}
 \graphicspath{{images/}}
 \usepackage[italian]{babel}
+\usepackage{caption}
+\usepackage{subcaption}
+%--------
+ \usepackage{adjustbox}
+ \usepackage{booktabs}
+ \usepackage{tabularx}
+ \usepackage{geometry}
+%--------
+
 \title{Sistema di detection di rifiuti plastici su specchi d'acqua}
 \author{De Ramundo Marco - Perani Xavier}
 \date{Agosto 2024}
@@ -19,6 +28,7 @@ Obiettivo: ottenere un modello che possa individuare e classificare oggetti sull
 o un lago per poter riconoscere e individuare rifiuti plastici come bottiglie e buste di plastica.
 
 \input{intro.tex}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \input{dataset.tex}
 
 \input{modello.tex}
