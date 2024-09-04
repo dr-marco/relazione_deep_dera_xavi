@@ -25,21 +25,48 @@ ha avuto 300 epoche a disposizione per l'addestramento mantenendo gli stessi ipe
 
 % Dettagli configurazione, tipologia modello e iperparametri, dove è stato eseguito il train
 Di seguito sono riportati tutti gli iperparametri più importanti che caratterizzano questi addestramenti:
-%TODO aggiungere tabella iperparametri
--> aggiunto dropout
 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lc}
+        \hline
+        \textbf{Iperparametro} & \textbf{Valore} \\
+        \hline
+        epoche & 300  \\
+        optimizer & auto (SGD) \\
+        learning rate (lr0) & 0.01 \\
+        learning rate (lrf) & 0.01 \\
+        momentum & 0.937 \\
+        weight\_decay & 0.0005 \\
+        imgsz & 640 \\
+        dropout & 0.15 \\
+        patience & 100 \\
+        \midrule
+        hsv\_h & 0.7 \\
+        degrees & 120 \\
+        shear & 55 \\
+        \hline
+    \end{tabular}
+    \caption{Configurazione iperparametri del modello \texttt{small-1203} per il training}
+    \label{tab:v2-model-configs}
+    \end{table}
 
+In particolare da notare nella tabella \ref*{tab:v2-model-configs} l'aggiunta dell'iperparametro \texttt{dropout} rispetto alla configurazione
+del modello \texttt{small-1202} per poter introdurre una certa regolarizzazione all'interno della fase
+di apprendimento. 
+Abbiamo poi sfruttato il parametro \texttt{patience} che indica quante epoche aspettare
+prima di effettuare early stopping nel caso in cui non ci fossero stati miglioramenti delle prestazioni.
 % Risultati training
     % - andamento training
 
-    \begin{figure}[h]
+    \begin{figure}[!htb]
         \centering
         \includegraphics[width=0.8\textwidth]{v_2/small-1203/results.png}
         \caption{Andamento funzioni di loss e metriche durante l'esecuzione di \texttt{small-1203}}
         \label{fig:v2-2}
     \end{figure}
     % - grafici recall e precision e performance e F1
-    \begin{figure}[h]
+    \begin{figure}[!htb]
         \centering
         \begin{subfigure}{.5\textwidth}
             \centering
@@ -105,7 +132,7 @@ Se il modello fosse pensato per il solo riconoscimento delle bottiglie di plasti
 si potevano raggiungere ottimi risultati ma di contro sarebbero stati poco utili poi all'atto 
 pratico. 
 
-\begin{table}[h]
+\begin{table}[!htb]
     \centering
     \begin{tabularx}{\textwidth}{lYYYc}
         \toprule
@@ -122,7 +149,7 @@ pratico.
     \label{table:v2-1}
 \end{table}
 
-\begin{figure}[h!]
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\textwidth]{v_2/small-1203/confusion_matrix_normalized.png}
     \caption{Matrice di confusione normalizzata data dal modello \texttt{small-1203}}
