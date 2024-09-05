@@ -2,7 +2,8 @@
 
 % Introduzione su strategia del training -> qual è l'obiettivo dell'esperimento?
 L'idea per l'esperimento successivo è stata quella di utilizzare un modello con più parametri e
-pertanto optare per una dimensione di YOLO più grande. Se è vero che il numero di epoche rimane
+pertanto optare per una dimensione di YOLO più grande, nello specifico la dimensione media YOLOv8m. 
+Se è vero che il numero di epoche rimane
 alto, dall'altra parte si spera di poter raggiungere prestazioni migliori con una rete più profonda.
 
 Il numero di epoche è stato impostato a 200 perché vedendo il precedente tentativo con il modello small
@@ -55,24 +56,26 @@ la dimensione del modello di YOLO.
         \begin{subfigure}{.5\textwidth}
             \centering
             \includegraphics[width=.9\linewidth]{v_3/P_curve.png}
-            
+            \subcaption{P-curve}
             \label{fig:v3-3.1}
         \end{subfigure}%
           \begin{subfigure}{.5\textwidth}
             \centering
             \includegraphics[width=.9\linewidth]{v_3/R_curve.png}
-            
+            \subcaption{R-curve}
             \label{fig:v3-3.2}
         \end{subfigure}
         \vskip\baselineskip
         \begin{subfigure}{.5\textwidth}
             \centering
             \includegraphics[width=.9\linewidth]{v_3/PR_curve.png}
+            \subcaption{PR-curve}
             \label{fig:v3-3.3}
         \end{subfigure}
         \begin{subfigure}{.49\textwidth}
             \centering
             \includegraphics[width=.9\linewidth]{v_3/F1_curve.png}
+            \subcaption{F1-curve}
             \label{fig:v3-3.4}
         \end{subfigure}
         
@@ -104,7 +107,7 @@ l'obiettivo di migliorare i risultati finora raggiunti.
             NOT\_PLASTIC\_WASTE & 0.435 & 0.279 & 0.305 & 0.178 \\
             \bottomrule
         \end{tabularx}
-        \caption{Risultati per \textit{medium-200-0}}
+        \caption{Risultati delle metriche sul test set per \texttt{medium-200-0}}
         \label{table:v3-1}
     \end{table}
 
