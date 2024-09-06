@@ -1,6 +1,6 @@
 \subsection*{Modelli 6 - tuning iperparametri}
 
-L'ultimo esperimento rimasto è quello di effettuare una regolazione degli iperparametri tramite 
+L'ultimo esperimento è quello di effettuare una regolazione degli iperparametri tramite 
 fine tuning. Abbiamo pertanto utilizzato lo strumento \texttt{tuner} della libreria ultralytics
 per poter ricavare i valori migliori per gli iperparametri. Tale \texttt{tuner} effettua una serie 
 di training con dei valori di iperparametri iniziali. Ogni iterazione consiste in una manciata
@@ -129,6 +129,12 @@ Il nome dato ai modelli per questi training è \textit{size}\texttt{-tune-2.0}.
     \caption{Risultati delle metriche sul test set per \textit{size}\texttt{-tune-2.0}}
     \label{table:v6-2}
 \end{table}
+
+Come è possibile vedere nelle figure \ref{fig:v6-3}, che mostrano l'andamento delle funzioni di errore e delle
+metriche durante la fase di addestramento, e nella tabella \ref{table:v6-2},
+che mostra le prestazioni su test set, i risultati sono in linea con quelli già ottenuti e non hanno 
+mostrato miglioramenti significativi. Il modello che ha portato a prestazioni migliori è stato 
+\texttt{small-tune-2.0} che ha raggiunto un valore di mAP50 pari al 34.5\%.
 
 \begin{figure}[!htb]
     \centering
