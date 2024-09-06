@@ -20,7 +20,7 @@ impostato a 600 con il modello \texttt{small} e patience pari a 300. Avendo poi 
 risultati si è deciso di ridurre il numero di epoche a 200 e la patience a 50 per le altre due 
 dimensioni. Il modello \texttt{medium} ha poi subito un arresto verso la fine dell'addestramento. Non 
 abbiamo pertanto i grafici dell'addestramento a disposizione ma solo le metriche ricavate dalla validazione
-sul test set.
+sul test set. 
 
 % Dettagli configurazione, tipologia modello e iperparametri, dove è stato eseguito il train
 
@@ -146,8 +146,12 @@ quelle preannunciate.
         \label{fig:v5-5}
     \end{figure}
     
+    Dalla tabella \ref{table:v5-1} possiamo vedere come il modello migliore sia quello
+\texttt{small} ma questo non supera il valore di mAP del 34.9\%, al di sotto di alcuni
+risultati raggiunti nei tentativi precedenti. Questa discrepanza di prestazioni tra 
+i nostri valori e quelli indicati nell'articolo suggeriscono un qualche problema di fondo.
 
-    \begin{table}[!htbp]
+    \begin{table}[!htb]
         \centering
         \begin{tabularx}{\textwidth}{lYYYc}
             \toprule
@@ -182,11 +186,6 @@ quelle preannunciate.
         \label{table:v5-1}
     \end{table}
 
-Dalla tabella \ref{table:v5-1} possiamo vedere come il modello migliore sia quello
-\texttt{small} ma questo non supera il valore di mAP del 34.9\%, al di sotto di alcuni
-risultati raggiunti nei tentativi precedenti. Questa discrepanza di prestazioni tra 
-i nostri valori e quelli indicati nell'articolo suggeriscono un qualche problema di fondo.
-
 Da una parte è plausibile un qualche nostro errore ma strano che porti a risultati
 tanto disastrosi. Dall'altra parte è possibile che i risultati pubblicati dai 
 ricercatori non siano affidabili ma in quel caso sarebbe necessario capire in che modo 
@@ -194,13 +193,13 @@ abbiano raggiunto le prestazioni dichiarate. Dopo vari tentativi, notando per lo
 gli andamenti delle funzioni di errore del modello migliore nell'articolo, si è iniziato a dubitare che gli 
 autori abbiano utilizzato correttamente il dataset per la validazione e la fase di test.
 
-Abbiamo pertanto provare a effettuare test di validazione sul train set scoprendo così
-come i valori di mAP50 andavano così ad avere lo stesso comportamento se non addirittura
+Abbiamo pertanto provato a effettuare test di validazione sul train set scoprendo così
+come i valori di mAP50 andavano così ad avere lo stesso valore se non addirittura
 migliore, pari a 78.3\%. Quindi è plausibile che abbiano usato il train set per la fase di test.
 
 Per verificare lo stesso comportamento nella fase di validazione durante l'addestramento
 è stato eseguito un ulteriore tentativo su un modello nano impostando che il train set venga usato
-anche come validation set. I risultati possono essere osservati alla figura \ref{fig:v5-4}.
+anche come validation set. I risultati possono essere osservati nella figura \ref{fig:v5-4}.
 
     % - matrici di confusione
     \begin{figure}[!htb]
