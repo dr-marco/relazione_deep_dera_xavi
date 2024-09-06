@@ -10,7 +10,7 @@ nominati come \verb|small-120x|.
 Il primo dei due modelli, \verb|small-1202|, ha visto una esecuzione 
 comunque non ottimale visto che alcuni dei valori di loss rispetto alla validazione non sono stati 
 salvati per alcuni problemi durante l'esecuzione su colab. Ciononostante si è visto, come in figura
-\ref*{fig:v2-1}, che i valori delle funzioni di loss continuavano a decrescere mentre le metriche
+\ref{fig:v2-1}, che i valori delle funzioni di loss continuavano a decrescere mentre le metriche
 o rimanevano costanti, come precision e recall, o andavano a migliorare, come mAP50.
 
 \begin{figure}[h]
@@ -51,7 +51,7 @@ Di seguito sono riportati tutti gli iperparametri più importanti che caratteriz
     \label{tab:v2-model-configs}
     \end{table}
 
-In particolare da notare nella tabella \ref*{tab:v2-model-configs} l'aggiunta dell'iperparametro \texttt{dropout} rispetto alla configurazione
+In particolare da notare nella tabella \ref{tab:v2-model-configs} l'aggiunta dell'iperparametro \texttt{dropout} rispetto alla configurazione
 del modello \texttt{small-1202} per poter introdurre una certa regolarizzazione all'interno della fase
 di apprendimento. 
 Abbiamo poi sfruttato il parametro \texttt{patience} che indica quante epoche aspettare
@@ -107,24 +107,24 @@ prima di effettuare early stopping nel caso in cui non ci fossero stati migliora
 
 % Commento risultati
 Quello che si è potuto vedere dai risultati e dalle performance di questi modelli, come è possibile
-consultare dai grafici in figura \ref*{fig:v2-2} e in tabella \ref*{table:v2-1}, è che la rete
+consultare dai grafici in figura \ref{fig:v2-2} e in tabella \ref{table:v2-1}, è che la rete
 tende ad avere discreti precisione e richiamo ma non troppo soddisfacenti. 
 In particolare se si considera una delle metriche più significative quali mAP50 vediamo che si 
 raggiunge il valore nel caso migliore del 37.4\% che potrebbe essere sì considerato un risultato
 accettabile ma che presenta alcuni dubbi sull'efficacia del modello. 
 
-Considerando anche gli andamenti delle funzioni di errore durante l'addestramento (figura \ref*{fig:v2-2}) si può notare
+Considerando anche gli andamenti delle funzioni di errore durante l'addestramento (figura \ref{fig:v2-2}) si può notare
 come i valori di loss con il set di validazione vengono plafonati mentre  quelli inerenti al 
 training set in genere si riducono ma avendo un comportamento oscillante. Questo può indicare
 un momento di stallo che può portare a un indesiderato overfitting della rete.
 
-È anche possibile vedere dalla tabella \ref*{table:v2-1} e dalla matrice di confusione normalizzata
-in figura \ref*{fig:v2-4} come la distribuzione sbilanciata delle classi comporta sì ottimi risultati
+È anche possibile vedere dalla tabella \ref{table:v2-1} e dalla matrice di confusione normalizzata
+in figura \ref{fig:v2-4} come la distribuzione sbilanciata delle classi comporta sì ottimi risultati
 per la classe \texttt{PLASTIC\_BOTTLE} ma risultati discreti nelle altre se non addirittura pessime
 considerando la classe \texttt{OTHER\_PLASTIC\_WASTE}. Questo fenomeno si è visto in tutti gli esperimenti
 e non è stato possibile rimuoverlo ma solo arginarlo in parte.
 
-Anche per quanto riguarda l'analisi delle curve di confidenza delle varie metriche, figura \ref*{fig:v2-3},
+Anche per quanto riguarda l'analisi delle curve di confidenza delle varie metriche, figura \ref{fig:v2-3},
 si può notare come la classe \texttt{PLASTIC\_BOTTLE}, rappresentata dalle curve arancioni,
 abbia performance nettamente migliori rispetto alla media.
 

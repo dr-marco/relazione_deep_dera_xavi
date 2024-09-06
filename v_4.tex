@@ -2,7 +2,62 @@
 
 
 % Introduzione su strategia del training -> qual è l'obiettivo dell'esperimento?
+Nella ricerca di ulteriori soluzioni per ottenere migliori risultati si è quindi
+deciso di guardare se altre persone hanno lavorato sullo stesso dataset e quali 
+prestazioni hanno in tal caso raggiunto. Il motivo di ciò era duplice: in primo
+luogo per avere soluzioni differenti a quelle finora intraprese; in secondo 
+luogo per ottenere almeno delle prestazioni di rifermento che era auspicabile 
+ambire nel nostro lavoro. Inoltre abbiamo pensato che essendo il dataset rilasciato 
+per una sfida pubblica ci sarebbe stata la chance di poter visionare altri lavori
+\footnote[2]{
+In generale non ci siamo limitati alla ricerca ristretta al nostro dataset ma 
+anche a tutti i lavori inerenti al nostro problema di rifiuti su superfici d'acqua.
+Molti dei lavori sono stati molto interessanti ma si basavano su approcci totalmente
+differenti quali l'analisi di immagini satellitari o di droni per valutare lo stato di 
+salute dei fiumi. Uno degli articoli trovati, \textit{Detection of River Plastic Using UAV Sensor Data and
+Deep Learning} è disponibile
+\href{https://doi.org/10.3390/rs14133049}{qui}
+}.
 
+Peccato che le soluzioni reperibili pubblicamente non sono state così numerose se 
+non per un articolo pubblicato per una conferenza sostenuta quest'anno a Leopoli, 
+Ucraina, ovvero \href{https://ceur-ws.org/Vol-3668/}{COLINS-2024}: 8th International Conference on 
+Computational Linguistics and Intelligent Systems.
+
+L'articolo, \textit{Plastic Waste on Water Surfaces Detection Using
+Convolutional Neural Networks}\footnote[3]{Link dell'articolo disponibile \href{https://ceur-ws.org/Vol-3668/paper13.pdf}{qui}},
+ scritto da Yurii Kryvenchuk e Andrii Marusyk,
+mostra i risultati ottenuti dai due ricercatori proprio sul dataset su cui stiamo lavorando.
+
+I risultati pubblicati sembravano molto promettenti e i loro accorgimenti potevano risultare molto utili. 
+Hanno eseguito gli addestramenti con una GPU Nvidia GeForce RTX 2070 quindi non erano avvantaggiati
+per quanto riguarda la potenza computazionale. 
+
+Hanno lavorato con i modelli di YOLO di dimensione nano e medium, ed effettuando una piccola fase di fine 
+tuning spaziando con i valori del numero di epoche, learning rate, momentum e dimensione delle immagini in ingresso.
+Le tecniche di fine tuning non erano complesse, avendo per lo più effettuato una grid search su questi pochi iperparametri.
+
+Le due soluzioni più interessanti colte dall'articolo sono state: 
+\begin{itemize}
+    \item Procedere con una fase di fine tuning magari più complessa e completa (soluzione già presa in 
+    considerazione)
+    \item Modificare il parametro \texttt{imgsz} per permettere l'uso di immagini con una risoluzione maggiore
+\end{itemize}
+
+La seconda soluzione in particolare era intrigante perché rispondeva a una delle possibili problematiche del nostro
+dataset: poichè molte delle istanze nelle immagini sono di piccole dimensioni, utilizzare una risoluzione 640x640
+pixel in ingresso poteva far si che le istanze fossero poco riconoscibili e perdessero informazione utile
+al modello per un corretto riconoscimento. 
+
+Questo aspetto unito al fatto che gli autori hanno raggiunto ottimi risultati con un modello nano YOLOv8n,
+learning rate molto basso, pari a 0.0001 e momentum a 0.98, ci hanno convinto ad aumentare anche per il nostro
+esperimento \texttt{imgsz} a una dimensione di 800x800 pixel. Nell'articolo, il Model 2 arrivava ad avere un valore
+di mAP pari al 68.6\%, quasi il doppio del nostro miglior risultato ottenuto finora.
+
+Abbiamo pertanto impostato alcuni degli iperparametri come indicato nell'articolo nella speranza di ottenere 
+buoni risultati. Si è lavorato con il modello small per compensare il numero di pesi dovuto all'aumento di \texttt{imgsz}
+e i due modelli qui presentati sono nominati come \texttt{small-tune-0x} e qui di seguito nella tabella
+\ref{tab:v4-model-configs} è possibile visionare i valori degli iperparametri.
 
 \begin{table}[!htb]
     \centering
@@ -29,7 +84,13 @@
     \label{tab:v4-model-configs}
     \end{table}
 
-    
+I due tentativi si distinguono per alcuni dettagli. Il primo modello, \texttt{small-tune-03},
+ha mantenuto le 200 epoche e l'ottimizzatore automatico. Quest'ultimo parametro si è rivelato
+ controproducente perché la funzione di ottimizzazione \texttt{auto} della libreria ultralytics
+permettere di decidere la migliore funzione ma ignorando altri iperparametri tra cui il learning rate.
+
+Pertanto il secondo modello, \texttt{small-tune-04}, ha visto impostato l'ottimizzatore come \texttt{Adam} 
+e aumentato il numero di epoche a disposizione, ma riducendo il numero di epoche per l'early stopping.
     % Dettagli configurazione, tipologia modello e iperparametri, dove è stato eseguito il train
 
 % Risultati training
@@ -74,7 +135,23 @@
         \label{fig:v4-3}
     \end{figure}
     
-  
+Il modello \texttt{small-tune-03} ha visto risultati (figura \ref{fig:v4-2}) in linea con gli esperimenti precedenti ma 
+nettamente distanti da quelli indicati dall'articolo. L'andamento delle funzioni di errore è sempre risultata
+discendente seppure verso la fine con una velocità ridotta mentre le metriche hanno via via subito uno 
+stallo. Confidando in una ricerca migliore con gli iperparametri impostati si è deciso di effettuare
+un nuovo training partendo da uno di quelli ottenuto dall'esperimento \texttt{small-tune-03}.
+
+Il modello \texttt{small-tune-04} è stato il tentativo di sistemare le imprecisioni dovute al comportamento
+della funzione dello strumento di ottimizzazione di YOLO della libreria. Questo tentativo si è 
+rivelato di poca utilità in quanto il modello aveva già raggiunto il livello di apprendimento
+possibile e continuare l'addestramento con un learning rate molto basso, nonostante permettesse 
+di esplorare lo spazio delle ipotesi con maggior dettaglio, non permetteva di andare molto lontano 
+con i risultati già ottenuto.
+
+Così come si può vedere dalla figura \ref{fig:v4-6} le funzioni di errore e le metriche durante la fase
+di training sono state molto oscillanti e non hanno portato miglioramenti significativi. Dalla tabella
+\ref{table:v4-1} si può notare come le prestazioni siano pressoché le stesse e che non ci siano 
+differenze sostanziali tra i due tentativi.
 %----------------------------------
 
 \begin{figure}[!htb]
@@ -142,6 +219,15 @@
         \caption{Risultati delle metriche sul test set per \texttt{small-tune-03} sopra e \texttt{small-tune-03} sotto}
         \label{table:v4-1}
     \end{table}
+
+Entrambi i modelli sono stati eseguiti sui server colab con i vincoli per l'utilizzo delle risorse
+imposto da Google. I risultati dell'articolo non sono stati replicati e inizialmente la causa
+poteva ricadere su una gestione non accurata delle fasi di addestramento, sulla gestione approssimativa
+degli iperparametri e su uno scarso rigore nel replicare un esperimento svolto da altri ricercatori.
+
+Per questo motivo risultava necessario ripetere queste esecuzioni applicando più attenzione sulle 
+condizioni e sugli iperparametri. L'obiettivo diveniva quello di effettuare delle esecuzioni il più fedeli
+possibili a quelle descritte per poter replicare quei risultati che sembravano tanto promettenti.
 
     % - matrici di confusione
     \begin{figure}[!htb]

@@ -59,11 +59,30 @@ Nella tabella \ref{table:2} è possibile vedere il numero di istanze per classe 
 \label{table:2}
 \end{table}
 
-Le dimensioni delle immagini sono varie ma generalemente di qualità alta: la dimensione in larghezza supera i 1000 pixel e gli 800 pixel in altezza.
+Le dimensioni delle immagini sono varie ma generalemente di qualità alta: la dimensione in larghezza supera i 1000 pixel e gli 800 pixel in altezza. Di seguito nella tabella \ref{table:3} un riassunto delle dimensioni delle immagini presenti all'interno del dataset.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{lYYYY}
+        \toprule
+        \textbf{Dimensione Immagine} & \textbf{Training-Set} & \textbf{Validation-Set} & \textbf{Test-Set} & \textbf{Totale} \\
+        \midrule
+        1280x720   (16:9) & 2365 & 300 & 283 & 2948 \\
+        1280x640   (16:8)& 600 & 77 & 82 & 759 \\
+        1920x1080  (16:9) & 401 & 45 & 53 & 499 \\
+        3840x2160   (16:9) & 19 & 1 & 6 & 26 \\
+        2560x1440  (16:9) & 22 & 2 & 3 & 27 \\
+        \midrule
+        \textbf{Totale} & \textbf{3407} & \textbf{425} & \textbf{427} & \textbf{4259} \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Numero di immagini per dimensione (in pixel) nei vari subset e totale}
+    \label{table:3}
+\end{table}
 
 Nella immagine \ref{fig:1} è possibile in ordine vedere la distribuzione delle istanze nel dataset, la grandezza dei box per istanza all'interno dell'immagine, la distribuzione delle coordinate x e y del box nell'immagine, infine la grandezza del box per istanza.
 
-\begin{figure}[h]
+\begin{figure}[!bth]
     \centering
     \includegraphics[width=0.8\textwidth]{labels.jpg}
     \caption{Caratteristiche istanze nel dataset}

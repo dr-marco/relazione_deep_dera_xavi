@@ -1,3 +1,28 @@
 \section{Commento risultati e conclusioni}
 
 Ultima sezione da scrivere
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{lYYYc}
+        \toprule
+        Model & Precision & Recall & mAP50 & mAP50-95 \\
+        \midrule
+        \texttt{small-1203} & 0.452 & 0.450 & 0.374 & 0.172 \\
+        \texttt{medium-200-0} & 0.456 & 0.459 & 0.391 & 0.186 \\
+        \texttt{small-tune-03} & 0.450 & 0.451 & 0.382 & 0.170\\
+        \texttt{small-tune-04} & 0.457 & 0.449 & 0.382 & 0.172 \\
+        \midrule
+        \texttt{nano-ukra-0} & 0.330 & 0.379 & 0.308 & 0.149 \\
+        \texttt{small-ukra-0} & 0.432 & 0.406 & 0.349 & 0.178 \\
+        \texttt{medium-ukra-0} &  0.405 & 0.394 & 0.324 & 0.168 \\
+        \midrule
+        \texttt{nano-tune-2.0} & 0.372 & 0.428 & 0.320 & 0.159 \\
+        \texttt{small-tune-2.0} & 0.400 & 0.389 & 0.345 & 0.172 \\
+        \texttt{medium-tune-2.0} & 0.363 & 0.487 & 0.335 & 0.166 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Confronto validazione su test set tra i modelli testati}
+    \label{table:general-results}
+\end{table}
