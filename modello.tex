@@ -3,12 +3,12 @@
 L'obiettivo del lavoro è quello di effettuare detection sui rifiuti plastici
 su immagini e per questo si è optato su una architettura basata su rete convoluzionale che allo stato dell'arte sia efficacie e abbia anche 
 facilità nell'utilizzo. La scelta è ricaduta su YOLO, You Only Look Once, in
-quanto risulta una delle architetture più utilizzate ed performanti.
+quanto risulta una delle architetture più utilizzate e performanti.
 A maggior ragione, il dataset a nostra disposizione era già predisposto per 
 essere compatibile con YOLO.
 
 Ci siamo basati sulla libreria YOLO di \href{https://docs.ultralytics.com/}{ultralytics} in quanto possiede molti metodi e strumenti per lavorare al meglio con il modello. In particolare molto utile la gestione interna per 
-fare augmentation direttamente durante la fase di training.
+fare data augmentation direttamente durante la fase di training.
 
 All'inizio del progetto era a disposizione la versione 8 di YOLO che è stata
 poi la versione da noi utilizzata sebbene in questi ultimi mesi sono state 
@@ -33,7 +33,7 @@ Il modello YOLOv8 incorpora anche una \textit{Neck} e una \textit{Head} ottimizz
 
 \subsection*{Dimensioni delle architetture usate}
 
-Nell'ambito del progetto, si è scelto di utilizzare le varianti \textbf{small}, \textbf{medium} e \textbf{nano} di YOLOv8 per il task di object detection, in quanto queste architetture offrono un buon compromesso tra capacità computazionale e performance, risultando particolarmente adatte per l'esecuzione su hardware con risorse limitate quali quelle a noi disponibili.
+Nell'ambito del progetto, si è scelto di utilizzare le varianti \textbf{small}, \textbf{medium} e \textbf{nano} di YOLOv8 per il task di object detection, in quanto queste architetture offrono un buon compromesso tra capacità computazionale e performance, risultando particolarmente adatte per l'esecuzione su hardware con risorse limitate ovvero quelle a noi disponibili.
 
 \subsection*{Vantaggi di YOLOv8 per il Riconoscimento dei Rifiuti Plastici}
 

@@ -2,7 +2,7 @@
 
 % Introduzione su strategia del training -> qual è l'obiettivo dell'esperimento?
 
-Per replicare i risultati si è deciso di essere il puù fedeli possibili con gli iperparametri 
+Per replicare i risultati si è deciso di essere il più fedeli possibili con gli iperparametri 
 noti e a disposizione nell'articolo dei ricercatori ucraini e di testare le 3 dimensioni di modelli
 di YOLO che fino a quel momento sono stati sfruttati: nano (YOLOv8n), small (YOLOv8s) e medium (YOLOv8m).
 Pertanto i nomi dei modelli addestrati fanno riferimento come \textit{size}\texttt{-ukra-0} per 
@@ -14,7 +14,7 @@ all'università dove venivano messi a disposizione 2 GPU T4. Il motivo principal
 server era dovuto non tanto a questo esperimento ma a quello successivo comprendente una fase di 
 tuning che risultava particolarmente onerosa.
 
-Gli iperparametri, tabella \ref{tab:v5-model-configs}, sono stati impostati esattamente ai valori citati nell'articolo e impostati
+Gli iperparametri, tabella \ref{tab:v5-model-configs}, sono stati impostati esattamente con i valori citati nell'articolo e impostati
 ai valori di default qualora l'iperparametro non venisse menzionato. Il numero di epoche è stato inizialmente
 impostato a 600 con il modello \texttt{small} e patience pari a 300. Avendo poi visionato i 
 risultati si è deciso di ridurre il numero di epoche a 200 e la patience a 50 per le altre due 
@@ -103,9 +103,9 @@ delle funzioni di errore durante la fase di training scendono velocemente fino
 a raggiungere valori molto al di sotto di quelli trovati finora. Ma se si 
 guarda l'andamento delle funzioni di errore nelle fasi di validazione si può
 vedere come l'errore risulta più simile ai precedenti tentativi rispetto ai risultati
-mostrati nell'articolo. Anche le metriche raggiungono abbastanza velocemente una fase di 
-saturazione delle prestazioni che però non sono soddisfacenti, ben al di sotto di 
-quelle preannunciate.
+mostrati nell'articolo. Anche le metriche raggiungono abbastanza velocemente uno stato di 
+saturazione delle prestazioni che però sono ben al di sotto di 
+quelle indicate.
 
 \begin{figure}[!htb]
     \centering
@@ -148,7 +148,7 @@ quelle preannunciate.
     
     Dalla tabella \ref{table:v5-1} possiamo vedere come il modello migliore sia quello
 \texttt{small} ma questo non supera il valore di mAP del 34.9\%, al di sotto di alcuni
-risultati raggiunti nei tentativi precedenti. Questa discrepanza di prestazioni tra 
+risultati raggiunti nei tentativi precedenti. Questa significativa discrepanza di prestazioni tra 
 i nostri valori e quelli indicati nell'articolo suggeriscono un qualche problema di fondo.
 
     \begin{table}[!htb]
@@ -198,8 +198,8 @@ come i valori di mAP50 andavano così ad avere lo stesso valore se non addirittu
 migliore, pari a 78.3\%. Quindi è plausibile che abbiano usato il train set per la fase di test.
 
 Per verificare lo stesso comportamento nella fase di validazione durante l'addestramento
-è stato eseguito un ulteriore tentativo su un modello nano impostando che il train set venga usato
-anche come validation set. I risultati possono essere osservati nella figura \ref{fig:v5-4}.
+è stato eseguito un ulteriore tentativo su un modello nano impostando che il train set venisse usato
+come validation set. I risultati possono essere osservati nella figura \ref{fig:v5-4}.
 
     % - matrici di confusione
     \begin{figure}[!htb]

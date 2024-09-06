@@ -7,8 +7,7 @@ congelare alcuni layer con l'opzione \verb|freeze| ma bilanciando l'operazione o
 del modello più piccola quale la versione small YOLOv8s. Il numero di epoche per esecuzione è stato impostato a 120 e per tale motivo i vari modelli sono stati
 nominati come \verb|small-120x|. 
 
-Il primo dei due modelli, \verb|small-1202|, ha visto una esecuzione 
-comunque non ottimale visto che alcuni dei valori di loss rispetto alla validazione non sono stati 
+Il primo dei due modelli, \verb|small-1202|, ha visto un'esecuzione non ottimale visto che alcuni dei valori di loss rispetto alla validazione non sono stati 
 salvati per alcuni problemi durante l'esecuzione su colab. Ciononostante si è visto, come in figura
 \ref{fig:v2-1}, che i valori delle funzioni di loss continuavano a decrescere mentre le metriche
 o rimanevano costanti, come precision e recall, o andavano a migliorare, come mAP50.
@@ -24,7 +23,7 @@ La fase di training è stata pertanto ripetuta con l'esecuzione \verb|small-1203
 ha avuto 300 epoche a disposizione per l'addestramento mantenendo gli stessi iperparametri del tentativo precedente.
 
 % Dettagli configurazione, tipologia modello e iperparametri, dove è stato eseguito il train
-Di seguito sono riportati tutti gli iperparametri più importanti che caratterizzano questi addestramenti:
+Di seguito, nella tabella \ref{tab:v2-model-configs}, sono riportati tutti gli iperparametri più importanti che caratterizzano questi addestramenti:
 
 \begin{table}[h!]
     \centering
@@ -51,7 +50,7 @@ Di seguito sono riportati tutti gli iperparametri più importanti che caratteriz
     \label{tab:v2-model-configs}
     \end{table}
 
-In particolare da notare nella tabella \ref{tab:v2-model-configs} l'aggiunta dell'iperparametro \texttt{dropout} rispetto alla configurazione
+In particolare da notare l'aggiunta dell'iperparametro \texttt{dropout} rispetto alla configurazione
 del modello \texttt{small-1202} per poter introdurre una certa regolarizzazione all'interno della fase
 di apprendimento. 
 Abbiamo poi sfruttato il parametro \texttt{patience} che indica quante epoche aspettare
@@ -108,9 +107,9 @@ prima di effettuare early stopping nel caso in cui non ci fossero stati migliora
 % Commento risultati
 Quello che si è potuto vedere dai risultati e dalle performance di questi modelli, come è possibile
 consultare dai grafici in figura \ref{fig:v2-2} e in tabella \ref{table:v2-1}, è che la rete
-tende ad avere discreti precisione e richiamo ma non troppo soddisfacenti. 
+tende ad avere discreti valori di precisione e richiamo ma non troppo soddisfacenti. 
 In particolare se si considera una delle metriche più significative quali mAP50 vediamo che si 
-raggiunge il valore nel caso migliore del 37.4\% che potrebbe essere sì considerato un risultato
+raggiunge il valore di 37.4\% nel caso migliore che potrebbe essere sì considerato un risultato
 accettabile ma che presenta alcuni dubbi sull'efficacia del modello. 
 
 Considerando anche gli andamenti delle funzioni di errore durante l'addestramento (figura \ref{fig:v2-2}) si può notare

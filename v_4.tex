@@ -3,7 +3,7 @@
 
 % Introduzione su strategia del training -> qual è l'obiettivo dell'esperimento?
 Nella ricerca di ulteriori soluzioni per ottenere migliori risultati si è quindi
-deciso di guardare se altre persone hanno lavorato sullo stesso dataset e quali 
+deciso di guardare se altre persone avessero lavorato sullo stesso dataset e quali 
 prestazioni hanno in tal caso raggiunto. Il motivo di ciò era duplice: in primo
 luogo per avere soluzioni differenti a quelle finora intraprese; in secondo 
 luogo per ottenere almeno delle prestazioni di rifermento che era auspicabile 
@@ -46,7 +46,7 @@ Le due soluzioni più interessanti colte dall'articolo sono state:
 
 La seconda soluzione in particolare era intrigante perché rispondeva a una delle possibili problematiche del nostro
 dataset: poichè molte delle istanze nelle immagini sono di piccole dimensioni, utilizzare una risoluzione 640x640
-pixel in ingresso poteva far si che le istanze fossero poco riconoscibili e perdessero informazione utile
+pixel in ingresso poteva far si che le istanze fossero poco riconoscibili e perdessero informazioni utili
 al modello per un corretto riconoscimento. 
 
 Questo aspetto unito al fatto che gli autori hanno raggiunto ottimi risultati con un modello nano YOLOv8n,
@@ -89,8 +89,8 @@ ha mantenuto le 200 epoche e l'ottimizzatore automatico. Quest'ultimo parametro 
  controproducente perché la funzione di ottimizzazione \texttt{auto} della libreria ultralytics
 permettere di decidere la migliore funzione ma ignorando altri iperparametri tra cui il learning rate.
 
-Pertanto il secondo modello, \texttt{small-tune-04}, ha visto impostato l'ottimizzatore come \texttt{Adam} 
-e aumentato il numero di epoche a disposizione, ma riducendo il numero di epoche per l'early stopping.
+Pertanto il secondo modello, \texttt{small-tune-04}, è stato configurato con l'ottimizzatore \texttt{Adam} 
+ed è stato aumentato il numero di epoche a disposizione, ma riducendo il numero di epoche per l'early stopping.
     % Dettagli configurazione, tipologia modello e iperparametri, dove è stato eseguito il train
 
 % Risultati training
@@ -137,7 +137,7 @@ e aumentato il numero di epoche a disposizione, ma riducendo il numero di epoche
     
 Il modello \texttt{small-tune-03} ha visto risultati (figura \ref{fig:v4-2}) in linea con gli esperimenti precedenti ma 
 nettamente distanti da quelli indicati dall'articolo. L'andamento delle funzioni di errore è sempre risultata
-discendente seppure verso la fine con una velocità ridotta mentre le metriche hanno via via subito uno 
+discendente seppure verso la fine con una velocità ridotta, mentre le metriche hanno via via subito uno 
 stallo. Confidando in una ricerca migliore con gli iperparametri impostati si è deciso di effettuare
 un nuovo training partendo da uno di quelli ottenuto dall'esperimento \texttt{small-tune-03}.
 
@@ -146,7 +146,7 @@ della funzione dello strumento di ottimizzazione di YOLO della libreria. Questo 
 rivelato di poca utilità in quanto il modello aveva già raggiunto il livello di apprendimento
 possibile e continuare l'addestramento con un learning rate molto basso, nonostante permettesse 
 di esplorare lo spazio delle ipotesi con maggior dettaglio, non permetteva di andare molto lontano 
-con i risultati già ottenuto.
+con i risultati già ottenuti.
 
 Così come si può vedere dalla figura \ref{fig:v4-6} le funzioni di errore e le metriche durante la fase
 di training sono state molto oscillanti e non hanno portato miglioramenti significativi. Dalla tabella
