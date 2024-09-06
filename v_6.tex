@@ -73,6 +73,28 @@ Questa configurazione è stata utilizzata per l'esecuzione di 3 addestramenti, p
 \texttt{imgsz} è rimasto impostato a 800 pixel mentre come ottimizzatore è stato utilizzato AdamW.
 Il nome dato ai modelli per questi training è \textit{size}\texttt{-tune-2.0}.
 
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.8\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/nano-tune-2.0/results.png}
+        \subcaption{Nano}
+        \label{fig:v6-3.1}
+    \end{subfigure}
+    \begin{subfigure}{.8\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/small-tune-2.0/results.png}
+        \subcaption{Small}
+        \label{fig:v6-3.2}
+    \end{subfigure}
+    \begin{subfigure}{.8\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/medium-tune-2.0/results.png}
+        \subcaption{Medium}
+        \label{fig:v6-3.3}
+    \end{subfigure}
+    \caption{Comparazione tra l'andamento delle funzioni di errore durante il training
+    dei modelli \textit{size}\texttt{-tune-2.0}}
+    \label{fig:v6-3}
+\end{figure}
+
 \begin{table}[!htb]
     \centering
     \begin{tabularx}{\textwidth}{lYYYc}
@@ -107,3 +129,121 @@ Il nome dato ai modelli per questi training è \textit{size}\texttt{-tune-2.0}.
     \caption{Risultati delle metriche sul test set per \textit{size}\texttt{-tune-2.0}}
     \label{table:v6-2}
 \end{table}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/nano-tune-2.0/P_curve.png}
+        \subcaption{P-curve}
+        \label{fig:v6-4.1}
+    \end{subfigure}%
+      \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/nano-tune-2.0/R_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-4.2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/nano-tune-2.0/PR_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-4.3}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/nano-tune-2.0/F1_curve.png}
+        \subcaption{F1-curve}
+        \label{fig:v6-4.4}
+    \end{subfigure}
+    
+    \caption{Andamento funzioni di loss e metriche durante l'esecuzione di \texttt{nano-tune-2.0}}
+    \label{fig:v6-4}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/small-tune-2.0/P_curve.png}
+        \subcaption{P-curve}
+        \label{fig:v6-5.1}
+    \end{subfigure}%
+      \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/small-tune-2.0/R_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-5.2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/small-tune-2.0/PR_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-5.3}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/small-tune-2.0/F1_curve.png}
+        \subcaption{F1-curve}
+        \label{fig:v6-5.4}
+    \end{subfigure}
+    
+    \caption{Andamento funzioni di loss e metriche durante l'esecuzione di \texttt{small-tune-2.0}}
+    \label{fig:v6-5}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/medium-tune-2.0/P_curve.png}
+        \subcaption{P-curve}
+        \label{fig:v6-6.1}
+    \end{subfigure}%
+      \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/medium-tune-2.0/R_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-6.2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/medium-tune-2.0/PR_curve.png}
+        \subcaption{PR-curve}
+        \label{fig:v6-6.3}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{v_6/medium-tune-2.0/F1_curve.png}
+        \subcaption{F1-curve}
+        \label{fig:v6-6.4}
+    \end{subfigure}
+    
+    \caption{Andamento funzioni di loss e metriche durante l'esecuzione di \texttt{medium-tune-2.0}}
+    \label{fig:v6-6}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.49\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/nano-tune-2.0/confusion_matrix_normalized.png}
+        \subcaption{Nano}
+        \label{fig:v6-7.1}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/small-tune-2.0/confusion_matrix_normalized.png}
+        \subcaption{Small}
+        \label{fig:v6-7.2}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \includegraphics[width=0.9\textwidth]{v_6/medium-tune-2.0/confusion_matrix_normalized.png}
+        \subcaption{Medium}
+        \label{fig:v6-7.3}
+    \end{subfigure}
+    \caption{Comparazione tra le matrici di confusione normalizzate
+    dei modelli \textit{size}\texttt{-tune-2.0}}
+    \label{fig:v6-7}
+\end{figure}
