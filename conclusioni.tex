@@ -1,6 +1,27 @@
-\section{Commento risultati e conclusioni}
+\section{Conclusioni}
 
-Ultima sezione da scrivere
+Nella tabella \ref{table:general-results} abbiamo riassunto tutte le metriche dei 
+modelli realizzati. Tra tutti i modelli, \texttt{medium-200-0} è risultato quello
+con precisione, richiamo e mAP più alti. 
+
+I modelli che seguivano il metodo indicato dall'articolo hanno avuto le 
+prestazioni peggiori mentre il nostro tentativo con la regolazione dei iperparametri
+non ha portato ai risultati sperati.
+
+In generale comunque le prestazioni tra i vari tentativi sono abbastanza simili, non
+ci sono grosse discrepanze se non qualche tendenza di un modello a essere migliore di 
+un altro.
+
+Possiamo supporre che l'iperparametro \texttt{dropout} ha aiutato a migliorare le 
+performance e che per poter aumentare l'efficienza del modello sarebbe necessario
+mettere mano al dataset per contrastare meglio la distribuzione sbilanciata delle
+classi nelle immagini. I metodi di augmentation della libreria ultralytics non sono
+così sufficienti a contrastare questa problematica nonostante sia stato d'aiuto.
+
+In ultimo, i modelli ottenuti possono essere utili per il riconoscimento dei
+rifiuti, soprattutto per quanto riguarda le bottiglie di plastica, ma devono 
+essere perfezionati per ridurre la percentuale di errore e di mancata individuazione
+degli oggetti interessati.
 
 
 \begin{table}[htbp]
